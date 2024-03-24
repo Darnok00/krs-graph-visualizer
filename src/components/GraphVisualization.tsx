@@ -3,7 +3,7 @@ import React from 'react';
 import './GraphVisualization.css';
 import graphData from '../data/points.json';
 
-// Define the types for your JSON structure
+// Definiowanie typów dla struktury JSON
 type Neighbor = {
   id: string;
   weight: number;
@@ -18,7 +18,6 @@ type GraphPoint = {
   subgraph: string;
 };
 
-
 const GraphVisualization: React.FC = () => {
   const getPointById = (id: string) => {
     return graphData.find((point: GraphPoint) => point.id === id);
@@ -29,42 +28,56 @@ const GraphVisualization: React.FC = () => {
   };
 
   const getColorForSubgraph = (subgraphId: string) => {
-    const colors = ['red', 'green', 'blue']; // Add more colors for each subgraph
+    const colors = ['red', 'green', 'blue'];
     return colors[parseInt(subgraphId, 10) % colors.length];
   };
 
+  const gridSize = 100;
+
   return (
-    <svg width="1000" height="1000" className="graph-visualization">
+    <svg width={gridSize * 10} height={gridSize * 10} className="graph-visualization">
+      {[...Array(10)].map((_, i) => (
+        <React.Fragment key={i}>
+          <line x1={0} y1={i * gridSize} x2={gridSize * 10} y2={i * gridSize} stroke="white" />
+          <line x1={i * gridSize} y1={0} x2={i * gridSize} y2={gridSize * 10} stroke="white" />
+        </React.Fragment>
+      ))}
+
+      {graphData.map((point: GraphPoint) => (
+        point.neighbors.map((neighbor) => {
+          const neighborPoint = getPointById(neighbor.id);
+          if (!neighborPoint) return null;
+          return (
+            <line
+              key={`${point.id}-${neighbor.id}`}
+              x1={point.x * gridSize + gridSize / 2}
+              y1={point.y * gridSize + gridSize / 2}
+              x2={neighborPoint.x * gridSize + gridSize / 2}
+              y2={neighborPoint.y * gridSize + gridSize / 2}
+              stroke={getColorForSubgraph(point.subgraph)}
+              strokeWidth={getStrokeWidth(neighbor.weight)}
+            />
+          );
+        })
+      ))}
+
+      {/* Renderowanie punktów i tekstu */}
       {graphData.map((point: GraphPoint) => (
         <React.Fragment key={point.id}>
-          {/* Render lines for neighbors */}
-          {point.neighbors.map((neighbor) => {
-            const neighborPoint = getPointById(neighbor.id);
-            if (!neighborPoint) return null;
-            return (
-              <line
-                key={`${point.id}-${neighbor.id}`}
-                x1={point.x * 100 + 50}
-                y1={point.y * 100 + 50}
-                x2={neighborPoint.x * 100 + 50}
-                y2={neighborPoint.y * 100 + 50}
-                stroke={getColorForSubgraph(point.subgraph)}
-                strokeWidth={getStrokeWidth(neighbor.weight)}
-              />
-            );
-          })}
           <circle
-            cx={point.x * 100 + 50}
-            cy={point.y * 100 + 50}
-            r="15" 
+            cx={point.x * gridSize + gridSize / 2}
+            cy={point.y * gridSize + gridSize / 2}
+            r="15"
             fill={getColorForSubgraph(point.subgraph)}
           />
           <text
-            x={point.x * 100 + 50}
-            y={point.y * 100 + 55}
+            x={point.x * gridSize + gridSize / 2}
+            y={point.y * gridSize + gridSize / 2}
+            dy={-20} // Aby tekst był nad punktem
             textAnchor="middle"
             fontSize="10"
             fill="white"
+            style={{ zIndex: 10 }} // Tekst nad liniami
           >
             {point.name}
           </text>
