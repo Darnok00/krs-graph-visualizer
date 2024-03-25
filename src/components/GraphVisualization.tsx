@@ -3,7 +3,6 @@ import React from 'react';
 import './GraphVisualization.css';
 import graphData from '../data/points.json';
 
-// Definiowanie typów dla struktury JSON
 type Neighbor = {
   id: string;
   weight: number;
@@ -61,7 +60,6 @@ const GraphVisualization: React.FC = () => {
         })
       ))}
 
-      {/* Renderowanie punktów i tekstu */}
       {graphData.map((point: GraphPoint) => (
         <React.Fragment key={point.id}>
           <circle
@@ -73,11 +71,11 @@ const GraphVisualization: React.FC = () => {
           <text
             x={point.x * gridSize + gridSize / 2}
             y={point.y * gridSize + gridSize / 2}
-            dy={-20} // Aby tekst był nad punktem
+            dy={-20}
             textAnchor="middle"
             fontSize="10"
             fill="white"
-            style={{ zIndex: 10 }} // Tekst nad liniami
+            style={{ zIndex: 10 }}
           >
             {point.name}
           </text>
