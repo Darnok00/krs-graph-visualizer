@@ -1,12 +1,12 @@
 import './App.css'
 import * as React from 'react'
-import GraphVisualization from './components/GraphVisualization'
+import FullGraph from './components/FullGraph';
 
 function App() {
 
   return (
     <>
-      <GraphVisualization />
+      <FullGraph />
     </>
   )
 }
