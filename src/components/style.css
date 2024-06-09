@@ -1,0 +1,103 @@
+body {
+  background-color: #2c2c2c;
+  color: #f1f1f1;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #444;
+  padding: 20px;
+  border-bottom: 2px solid #888;
+}
+
+.header input[type="number"] {
+  width: 60px;
+  height: 30px;
+  margin: 0 10px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #888;
+  background-color: #333;
+  color: white;
+}
+
+.header button {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  background-color: #888;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background-color: #666;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.legend div {
+  margin: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.legend div span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+}
+
+.legend div.blue span { background-color: blue; }
+.legend div.red span { background-color: red; }
+.legend div.green span { background-color: green; }
+.legend div.yellow span { background-color: yellow; }
+.legend div.pink span { background-color: pink; }
+.legend div.orange span { background-color: orange; }
+.legend div.purple span { background-color: purple; }
+.legend div.lime span { background-color: #7FFF00; }
+.legend div.aqua span { background-color: #7FFFD4; }
+.legend div.brown span { background-color: brown; }
+.legend div.indigo span { background-color: #8A2BE2; }
+.legend div.cadetblue span { background-color: #5F9EA0; }
+.legend div.chocolate span { background-color: #D2691E; }
+.legend div.coral span { background-color: #FF7F50; }
+.legend div.cornflowerblue span { background-color: #6495ED; }
+.legend div.crimson span { background-color: #DC143C; }
+.legend div.cyan span { background-color: #00FFFF; }
+.legend div.darkblue span { background-color: #00008B; }
+.legend div.darkcyan span { background-color: #008B8B; }
+.legend div.darkgoldenrod span { background-color: #B8860B; }
+.legend div.darkgray span { background-color: #A9A9A9; }
+.legend div.darkgreen span { background-color: #006400; }
+.legend div.khaki span { background-color: #BDB76B; }
+.legend div.darkmagenta span { background-color: #8B008B; }
+.legend div.darkorange span { background-color: #FF8C00; }
+.legend div.darkorchid span { background-color: #9932CC; }
+.legend div.darkred span { background-color: #8B0000; }
+.legend div.darkseagreen span { background-color: #8FBC8F; }
+.legend div.darkslateblue span { background-color: #483D8B; }
+.legend div.darkslategray span { background-color: #2F4F4F; }
+.legend div.darkturquoise span { background-color: #00CED1; }
+.legend div.darkviolet span { background-color: #9400D3; }
+.legend div.deeppink span { background-color: #FF1493; }
+.legend div.deepskyblue span { background-color: #00BFFF; }
+
+.graph-count {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
